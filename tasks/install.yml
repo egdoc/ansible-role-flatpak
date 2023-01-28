@@ -1,0 +1,20 @@
+---
+- name: Set flatpak user fact
+  become: false
+  ansible.builtin.set_fact:
+    flatpak_user: '{{ (outer_item.method == "system") | ternary("root", outer_item.user) }}'
+
+- name: Ensure flatpak remotes are enabled
+  become_user: '{{ flatpak_user }}'
+  community.general.flatpak_remote:
+    name: '{{ outer_item.name }}'
+    state: present
+    flatpakrepo_url: '{{ outer_item.url }}'
+    method: '{{ outer_item.method }}'
+
+- name: Ensure flatpaks are installed
+  become_user: '{{ flatpak_user }}'
+  community.general.flatpak:
+    state: present
+    method: '{{ outer_item.method }}'
+    name: '{{ outer_item.packages }}'

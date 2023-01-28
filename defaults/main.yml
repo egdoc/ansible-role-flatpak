@@ -1,0 +1,9 @@
+---
+flatpak_remotes: []
+# flatpak_remotes:
+#   - name: flathub
+#     url: https://dl.flathub.org/repo/flathub.flatpakrepo
+#     method: system
+#     user: foo
+#     packages:
+#       - org.videolan.VLC

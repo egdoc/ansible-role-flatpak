@@ -1,0 +1,13 @@
+galaxy_info:
+  author: Egidio Docile
+  role_name: flatpak
+  namespace: egdoc
+  description: Ansible role to enable flatpak remotes and install flatpak packages
+  license: license GPLv2
+  min_ansible_version: 2.1
+  galaxy_tags:
+    - flatpak
+    - flathub
+    - linux
+    - sandbox
+dependencies: []

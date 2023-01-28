@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Stat /home/foo/.local/share/flatpak/app/org.mamedev.MAME
+      ansible.builtin.stat:
+        path: /home/foo/.local/share/flatpak/app/org.mamedev.MAME
+      register: app
+
+    - name: Assert app directory exists
+      ansible.builtin.assert:
+        that:
+          - app.stat.exists
+          - app.stat.isdir

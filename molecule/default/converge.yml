@@ -1,0 +1,21 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: Ensure non privileged user exists
+      ansible.builtin.user:
+        name: 'foo'
+        create_home: true
+        shell: /bin/bash
+
+  roles:
+    - role: egdoc.flatpak
+      become: true
+      become_method: su
+      flatpak_remotes:
+        - name: flathub
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+          method: user
+          user: foo
+          packages:
+            - org.mamedev.MAME

@@ -1,0 +1,21 @@
+---
+- name: Assert specified method is valid
+  ansible.builtin.assert:
+    that: '{{ item.method in ["user", "system"] }}'
+    fail_msg: '"method" should be either "user" or "system"'
+  loop: '{{ flatpak_remotes }}'
+
+- name: Ensure flatpak executable is installed
+  become: true
+  ansible.builtin.package:
+    name: flatpak
+    state: installed
+
+- name: Include flatpak tasks
+  ansible.builtin.include_tasks:
+    file: install.yml
+    apply:
+      become: true
+  loop: '{{ flatpak_remotes }}'
+  loop_control:
+    loop_var: outer_item
