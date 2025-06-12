@@ -1,5 +1,6 @@
 Ansible role: flatpak
 =========
+[![CI](https://github.com/egdoc/ansible-role-flatpak/actions/workflows/ci.yml/badge.svg)](https://github.com/egdoc/ansible-role-flatpak/actions/workflows/ci.yml)
 
 Ansible role to enable flatpak remotes and install flatpak packages
 
