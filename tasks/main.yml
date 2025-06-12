@@ -1,0 +1,20 @@
+---
+- name: Ensure flatpak is installed
+  ansible.builtin.package:
+    name: flatpak
+    state: present
+
+- name: Ensure flatpak remotes are enabled
+  community.general.flatpak_remote:
+    name: '{{ item.name }}'
+    state: present
+    flatpakrepo_url: '{{ item.url }}'
+    method: system
+  loop: '{{ flatpak_remotes }}'
+
+- name: Ensure flatpaks are installed
+  community.general.flatpak:
+    name: '{{ item.installed_flatpaks | default([]) }}'
+    remote: '{{ item.name }}'
+    state: present
+  loop: '{{ flatpak_remotes }}'

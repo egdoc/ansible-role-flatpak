@@ -1,0 +1,19 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: Fedora42
+    image: geerlingguy/docker-fedora42-ansible
+    pre_build_image: true
+  - name: Rockylinux9
+    image: geerlingguy/docker-rockylinux9-ansible
+    pre_build_image: true
+  - name: Debian-bookworm
+    image: geerlingguy/docker-debian12-ansible
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
