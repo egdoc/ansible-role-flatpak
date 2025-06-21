@@ -18,3 +18,10 @@
     remote: '{{ item.name }}'
     state: present
   loop: '{{ flatpak_remotes }}'
+
+- name: Ensure flatpaks are removed
+  community.general.flatpak:
+    name: '{{ item.removed_flatpaks | default([]) }}'
+    remote: '{{ item.name }}'
+    state: absent
+  loop: '{{ flatpak_remotes }}'

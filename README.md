@@ -25,6 +25,7 @@ A list of dictionaries describing flatpak remotes and packages to install using 
 | name                 | The repository name                                             | string
 | url                  | The repository url                                              | string
 | installed_flatpacks  | A list of the flatpaks to install from the repository           | list
+| removed_flatpaks     | A list of the flatpaks to remove                                | list
 
 
 Dependencies

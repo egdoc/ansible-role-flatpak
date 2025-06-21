@@ -16,4 +16,8 @@ argument_specs:
             type: list
             elements: str
             default: []
+          removed_flatpaks:
+            type: list
+            elements: str
+            default: []
         default: []
