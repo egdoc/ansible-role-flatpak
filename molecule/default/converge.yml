@@ -16,3 +16,5 @@
           url: https://dl.flathub.org/repo/flathub.flatpakrepo
           installed_flatpaks:
             - ca._0ldsk00l.Nestopia
+          removed_flatpaks:
+            - org.signal.Signal
